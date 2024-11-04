@@ -1,0 +1,20 @@
+Here’s a full example if you’re chrooting into a Linux environment on /dev/sdX1:
+
+bash
+Copy code
+sudo mount /dev/sdX1 /mnt
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /proc /mnt/proc
+sudo mount --bind /sys /mnt/sys
+sudo mount --bind /run /mnt/run
+sudo chroot /mnt
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+Now you're in the chroot environment
+
+exit
+sudo umount /mnt/dev
+sudo umount /mnt/proc
+sudo umount /mnt/sys
+sudo umount /mnt/run
+sudo umount /mnt
+That’s it! Now you’ve chrooted into a Linux filesystem, performed your tasks, and exited safely.
